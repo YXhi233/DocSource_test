@@ -1,0 +1,106 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{csquotes}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{lipsum}
+
+\geometry{margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\thepage}
+\lhead{Documento di esempio}
+
+\title{Documento di esempio completo}
+\author{Mario Rossi}
+\date{Maggio 2025}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+\section{Introduzione}
+Questo documento è un esempio completo e privo di errori per testare tutte le funzionalità principali di \LaTeX.
+
+\section{Strutture di base}
+
+\subsection{Lista puntata}
+\begin{itemize}
+  \item Primo elemento
+  \item Secondo elemento
+  \item Terzo elemento
+\end{itemize}
+
+\subsection{Lista numerata}
+\begin{enumerate}
+  \item Primo punto
+  \item Secondo punto
+  \item Terzo punto
+\end{enumerate}
+
+\subsection{Testo colorato e evidenziato}
+Questo è un \textbf{testo in grassetto}, \textit{corsivo}, e un \textcolor{blue}{testo colorato}.
+
+\section{Formule matematiche}
+
+Ecco una formula in linea: \( E = mc^2 \)
+
+E una formula in blocco:
+\[
+\int_0^1 x^2 \, dx = \frac{1}{3}
+\]
+
+\section{Tabelle}
+
+\begin{table}[H]
+\centering
+\caption{Esempio di tabella}
+\begin{tabular}{lcc}
+\toprule
+Nome & Età & Città \\
+\midrule
+Giovanni & 28 & Milano \\
+Lucia & 34 & Roma \\
+Marco & 25 & Napoli \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\textwidth]{example-image} % Usa immagine esistente o dummy
+\caption{Esempio di immagine}\label{fig:esempio}
+\end{figure}
+
+Riferimento alla figuru~\ref{fig:esempio}.
+
+\section{Citazioni e bibliografia}
+
+Secondo \textcite{knuth1984tex}, \LaTeX{} è estremamente potente, dioasnacusaicsbacibsuiabiu.
+
+\section{Link}
+
+Visita il sito ufficiulesdaibdsiabciadbvhiabcib \LaTeX{}: \url{https://www.latex-project.org}
+ufficiule
+\newpage
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}
