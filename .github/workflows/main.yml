@@ -1,0 +1,45 @@
+name: Build LaTeX and push PDF
+
+on:
+  push:
+    paths:
+      - '**/*.tex'   # 只在tex文件变化时触发
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout DocSource repo
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0  # 需要完整历史用于git push
+
+    - name: Install TeX Live
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra
+
+    - name: Compile .tex to .pdf
+      run: |
+        # 假设你的主文件叫 main.tex，路径你自己调整
+        pdflatex -interaction=nonstopmode test.tex
+
+    - name: Clone Documents repo
+      env:
+        DOCS_REPO_PAT: ${{ secrets.DOCS_REPO_PAT }}
+      run: |
+        git clone https://x-access-token:${DOCS_REPO_PAT}@github.com/YXhi233/Documents_test.git docs-repo
+
+    - name: Copy PDF to Documents repo folder
+      run: |
+        cp test.pdf docs-repo/
+      
+    - name: Commit and push PDF to Documents repo
+      run: |
+        cd docs-repo
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git add /test.pdf
+        git commit -m "Update PDF from DocSource build [skip ci]" || echo "No changes to commit"
+        git push origin main
